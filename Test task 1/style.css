@@ -308,6 +308,47 @@ section {
     gap: 20px;
 }
 
+.center_icons{
+    display: flex;
+    gap: 32px;
+    margin-bottom: 64px;
+}
+
+.icon{
+    width: 32px;
+    height: 32px;
+}
+
+.insta{
+    background-image: url(src/images/Instagram_icon.svg);
+    background-size: cover;
+}
+
+.tiktok{
+    background-image: url(src/images/TikTok_icon.svg);
+    background-size: cover;
+}
+
+.linked{
+    background-image: url(src/images/LinkedIn_icon.svg);
+    background-size: cover;
+}
+
+.facebook{
+    background-image: url(src/images/Facebook_icon.svg);
+    background-size: cover;
+}
+
+.telegram{
+    background-image: url(src/images/Telegram_icon.svg);
+    background-size: cover;
+}
+
+.youtube{
+    background-image: url(src/images/Youtube_icon.svg);
+    background-size: cover;
+}
+
 /* Стили кнопок */
 button {
     cursor: pointer;
