@@ -4,75 +4,88 @@ body {
     color: #FFFFFF;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Убираем горизонтальный скролл */
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden; /* Убираем горизонтальный скролл */
 }
 
 section {
-    width: 100%;
+    width: 100%; /* Секции занимают 100% доступного пространства по ширине */
+    height: auto; /* Высота секций адаптивная */
     box-sizing: border-box;
 }
 
 /* Верхнее меню (header) */
 .menu {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
     padding: 10px 5%;
-    width: 100%;
+    width: 100%; /* Header занимает 100% доступного пространства по ширине */
     z-index: 999;
     background: transparent;
+    box-sizing: border-box;
+}
+
+.menu_wrapper{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .menu_left {
     font-family: 'Prata', serif;
     font-size: 36px;
-    flex: 0 1 20%;
+    flex: 0 1 auto; /* Ограничиваем ширину в соответствии с содержимым */
     text-align: left;
-    margin-left: 5%;
+    white-space: nowrap; /* Предотвращаем перенос текста */
+    /* width: 30%; */
 }
 
 .menu_right {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
-    flex: 0 1 40%;
-    text-align: left;
-    /* margin-left: auto; Отодвигаем от menu_left */
-    margin-left: 0;
+    display: flex;
+    flex: 1 1 auto;
+    /* justify-content: flex-end; */
+    justify-content: space-around;
+    align-items: center;
+    text-align: right;
+    /* max-width: calc(100% - 700px); Ограничиваем ширину, чтобы не перекрывать main_image */
+    overflow: hidden; /* Предотвращаем переполнение */
 }
 
-.menu_list {
+.menu_right ul {
+    display: flex; /* Возвращаем список в одну строку */
     list-style-type: none; /* Убираем маркеры списка */
-    display: flex; /* Выравниваем в одну строку */
-    gap: 20px;
-    margin: 0;
+    gap: 30px;
     padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    text-transform: uppercase;
+    font-size: 16px;
+    flex-wrap: wrap; /* Адаптивное поведение на маленьких экранах */
 }
 
-.menu_list_item {
-    text-transform: uppercase;
-    cursor: pointer;
+.menu_right li {
+    display: inline-block;
 }
 
 /* Секция main */
 .main {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0px 5%; /* Учитываем фиксированное меню */
-    /* height: 100vh; Всегда 100% высоты области просмотра */
-    height: 1000px;
-    /* max-height: 100%; */
+    align-items: flex-end; /* Прижимаем элементы, включая main_text, к нижнему краю */
+    flex-wrap: nowrap;
+    padding: 0 5%; /* Убираем лишние отступы */
     box-sizing: border-box;
 }
 
 .main_text {
     flex: 0 1 60%;
-    margin-left: 5%;
     max-width: 600px;
+    margin-bottom: 0; /* Убираем лишние отступы снизу */
+    padding-top: 244px;
 }
 
 .main_text_title {
@@ -87,11 +100,8 @@ section {
     margin: 0 0 20px;
 }
 
-.main_text_list {
-    margin: 0 0 20px;
-}
-
-.main_text_list ul{
+.main_text_list ul {
+    list-style-type: none; /* Убираем стандартные маркеры списка */
     padding-left: 0;
 }
 
@@ -99,87 +109,99 @@ section {
     display: flex;
     align-items: center;
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 20px; /* Добавлены отступы между элементами списка */
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 15px; /* Равномерные отступы между элементами */
 }
 
 .list_item_img {
     background-image: url(src/images/tick.png);
-    background-size: contain;
+    background-size: contain; /* Изображение пропорционально вписывается в контейнер */
     background-repeat: no-repeat;
     width: 40px;
     height: 40px;
-    margin-right: 10px;
 }
 
 .price {
     font-family: 'Prata', serif;
     font-size: 40px;
-    margin: 0 10px;
+    margin: 0;
 }
 
 .main_button {
-    font-size: 24px;
+    font-size: 20px;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #FFFFFF; /* Белый фон для кнопок */
-    width: 11rem;
-    height: 5.6rem;
+    border: none;
+    color: #222222;
     font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.main_button:hover {
+    background-color: #E0E0E0;
 }
 
 .main_image {
     flex: 0 1 40%;
     background-image: url(src/images/main_image.png);
-    background-size: cover;
-    background-position: center;
-    height: 100%; /* Соответствует высоте секции main */
-    max-height: 100%;
-    /* position: relative; */
-    margin-left: 5%; /* Адаптивный отступ слева от main_text */
-}
-
-/* Контейнер empty_line */
-.empty_line {
-    width: 100%;
-    height: 100px;
-    background-color: #222222; /* Совпадает с цветом body */
-    margin: 0; /* Убираем отступы сверху и снизу */
+    background-size: cover; /* Картинка растягивается и заполняет весь контейнер */
+    background-position: center; /* Центрируем изображение */
+    background-repeat: no-repeat; /* Убираем повторение картинки */
+    height: auto;
+    aspect-ratio: 1/1; /* Гарантируем правильное соотношение сторон */
 }
 
 /* Секция secondary */
 .secondary {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap; /* Гарантируем, что контейнеры не перенесутся */
+    align-items: stretch;
+    flex-wrap: nowrap;
     padding: 20px 5%;
-    /* height: 100vh; Всегда 100% высоты области просмотра */
-    height: 720px;
     box-sizing: border-box;
+    min-height: 500px; /* Минимальная высота секции */
+}
+
+.secondary_left_image,
+.secondary_right_image {
+    flex: 0 1 30%;
+    background-size: cover; /* Картинка растягивается и заполняет весь контейнер */
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100%; /* Устанавливаем высоту, чтобы изображения отображались корректно */
 }
 
 .secondary_left_image {
-    flex: 0 1 30%; /* Занимает 30% доступной ширины */
-    height: 100%; /* Соответствует высоте секции secondary */
-    background-image: url(src/images/secondary_left.png);
-    background-size: cover;
-    background-position: center;
-    margin-right: 2%; /* Адаптивный отступ справа от secondary_center */
+    background-image: url(src/images/secondary_left.png); /* Убедитесь, что путь к картинке правильный */
 }
 
+.secondary_right_image {
+    background-image: url(src/images/secondary_right.png); /* Убедитесь, что путь к картинке правильный */
+}
+
+/* Секция secondary_center */
 .secondary_center {
-    flex: 0 1 36%; /* Занимает 36% доступной ширины */
+    flex: 0 1 36%;
     max-width: 600px;
-    text-align: center;
-    text-align: left;
+    display: flex;
+    flex-direction: column; /* Используем столбцы для размещения элементов */
+    align-items: flex-start; /* Выравнивание элементов по началу */
+    justify-content: flex-start; /* Элементы располагаются сверху секции */
+    gap: 20px; /* Отступы между элементами */
+    padding: 0 20px; /* Убираем отступы сверху и снизу, оставляем слева и справа */
+    box-sizing: border-box;
+    background-color: transparent; /* Фон прозрачен */
 }
 
 .secondary_text_line {
     display: flex;
     align-items: center;
-    gap: 20px;
-    font-size: 24px;
-    margin-bottom: 40px;
+    gap: 15px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .secondary_marker {
@@ -187,6 +209,7 @@ section {
     width: 58px;
     height: 47px;
     background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
 }
 
@@ -194,71 +217,51 @@ section {
     width: 100%;
     height: 1px;
     background-color: #55565A;
-    margin-bottom: 40px;
+    margin: 20px 0;
 }
 
 .secondary_button {
-    background-color: #FFFFFF; /* Белый фон для кнопки */
     font-size: 20px;
     font-weight: bold;
-    width: 100%; /* Соответствует ширине secondary_center */
+    width: 100%;
     height: 78px;
-    margin-top: 20px;
+    background-color: #FFFFFF;
+    color: #222222;
+    border: none;
+    margin-top: auto; /* Прижимаем кнопку к низу контейнера */
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-/* Вернуто отображение всех элементов в secondary_center */
-.secondary_center_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.secondary_center_title {
-    font-family: 'Prata', serif;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.secondary_center_description {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.secondary_right_image {
-    flex: 0 1 30%; /* Занимает 30% доступной ширины */
-    height: 100%; /* Соответствует высоте секции secondary */
-    background-image: url(src/images/secondary_right.png);
-    background-size: cover;
-    background-position: center;
-    margin-left: 2%; /* Адаптивный отступ слева от secondary_center */
+.secondary_button:hover {
+    background-color: #E0E0E0;
 }
 
 /* Секция form_section */
 .form_section {
     padding: 20px 5%;
-    /* height: 100vh; Всегда 100% высоты области просмотра */
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    min-height: 500px; /* Устанавливаем минимальную высоту для секции */
 }
 
 .form_section_center {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFFFFF;
+    flex-wrap: wrap;
     border-radius: 20px;
     padding: 20px;
-    max-width: 1200px;
-    width: 100%;
-    box-sizing: border-box;
-    background-image: url(src/images/Form_building.png);
-    background-size: contain;
-    background-position: right;
+    max-width: 80%; /* Ограничиваем ширину */
+    height: 90%; /* Ограничиваем высоту */
+    background-image: url(src/images/Form_building.png); /* Убедитесь, что путь к картинке правильный */
+    background-size: contain; /* Картинка пропорционально вписывается в контейнер */
+    background-position: center;
     background-repeat: no-repeat;
+    box-sizing: border-box;
 }
 
 .form_left {
@@ -266,53 +269,24 @@ section {
     max-width: 600px;
 }
 
-.form_title {
-    font-family: 'Prata', serif;
-    font-size: 54px;
-    margin-bottom: 20px;
-    color: black;
-}
-
-.form_input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    font-size: 18px;
-    box-sizing: border-box;
-}
-
-.acept_block{
-    display: flex;
-    color: black;
-    font-size: 1rem;
-}
-
-.form_button{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 24px;
-    width: 100%;
-    background-color: black;
-    color:#FFFFFF;
-    height: 100px;
-}
-
 .form_right_secondary {
     flex: 1 1 50%;
-    /* width: 100%; */
-    /* height: 400px; */
-    width: 37rem;
-    height: 50rem;
-    background-image: url(src/images/Form_human.png);
-    background-size: cover;
+    height: auto;
+    background-image: url(src/images/Form_human.png); /* Убедитесь, что путь к картинке правильный */
+    background-size: contain; /* Картинка пропорционально вписывается в контейнер */
     background-position: center;
-    /* height: 100%; */
-    z-index: 1000;
+    background-repeat: no-repeat;
 }
 
 /* Footer */
 .footer {
     padding: 20px 5%;
     background-color: #333333;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%; /* Footer занимает 100% доступного пространства по ширине */
 }
 
 .footer_line {
@@ -322,153 +296,152 @@ section {
     margin: 10px 0;
 }
 
-.footer_menu {
-    display: flex;
+.footer_menu ul {
+    display: flex; /* Список в одну строку */
     justify-content: center;
-    gap: 3.75rem;
-    flex-wrap: wrap;
-    list-style: none; /* Убираем маркеры списка */
-    padding: 0;
-    margin: 2.5rem 0;
-}
-
-.footer_menu ul{
-    display: flex;
-    justify-content: center;
-    /* gap: 20px; */
-    gap: 3.75rem;
-    flex-wrap: wrap;
+    gap: 20px;
+    flex-wrap: wrap; /* Адаптивное поведение */
     list-style: none; /* Убираем маркеры списка */
     padding: 0;
     margin: 0;
+    text-transform: uppercase; /* Текст в верхнем регистре */
     font-family: Arial, Helvetica, sans-serif;
-    font-style: italic;
     font-size: 20px;
-    text-transform: uppercase;
+    font-style: italic; /* Курсивное начертание текста */
 }
 
 .footer_bottom {
     display: flex;
     justify-content: space-between;
-    padding: 10px 5%;
-    /* align-items: center; */
+    align-items: center;
+    width: 100%;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 3.75rem;
-    margin-bottom: 3rem;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .footer_bottom_left{
-    margin-left: 5%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .left_title{
-    font-family: Prata;
-    /* font-size: 36px; */
-    font-size: 2.25rem;
-}
-
-.left_text{
-    /* font-size: 20px; */
-    font-size: 1.25rem;
+    margin-bottom: 60px;
 }
 
 .footer_bottom_center{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.center_icons{
-    display: flex;
-    gap: 32px;
-    /* margin-bottom: 64px; */
-    margin-bottom: 3.75rem;
-}
-
-.icon{
-    width: 32px;
-    height: 32px;
-}
-
-.insta{
-    background-image: url(src/images/Instagram_icon.svg);
-    background-size: cover;
-}
-
-.tiktok{
-    background-image: url(src/images/TikTok_icon.svg);
-    background-size: cover;
-}
-
-.linked{
-    background-image: url(src/images/LinkedIn_icon.svg);
-    background-size: cover;
-}
-
-.facebook{
-    background-image: url(src/images/Facebook_icon.svg);
-    background-size: cover;
-}
-
-.telegram{
-    background-image: url(src/images/Telegram_icon.svg);
-    background-size: cover;
-}
-
-.youtube{
-    background-image: url(src/images/Youtube_icon.svg);
-    background-size: cover;
-}
-
-.center_text{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    text-align: center;
-    /* margin-top: 3.75rem; */
+    align-items: center;
 }
 
 .footer_bottom_right{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-end;
 }
 
 .bottom_button{
-    width: 11rem;
-    height: 4.8rem;
-    font-style: italic;
-    font-size: 20px;
+    margin-bottom: 60px;
 }
 
-.right_text{
-    text-align: right;
-    font-size: 20px;
+.center_icons {
+    display: flex;
+    justify-content: space-between; /* Равные отступы между элементами */
+    gap: 20px;
+    flex-wrap: nowrap;
+    margin-bottom: 60px;
 }
 
-/* Стили кнопок */
-button {
-    cursor: pointer;
-    background-color: #FFFFFF; /* Белый фон для всех кнопок */
-    border: none;
+.icon {
+    width: 32px;
+    height: 32px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
-button:hover {
-    opacity: 0.8;
+.icon.insta {
+    background-image: url(src/images/Instagram_icon.svg);
 }
 
-button:active {
-    opacity: 0.6;
+.icon.tiktok {
+    background-image: url(src/images/TikTok_icon.svg);
 }
 
-/* Переход к секции form_section */
-button {
-    scroll-behavior: smooth;
+.icon.linked {
+    background-image: url(src/images/LinkedIn_icon.svg);
 }
-button[href="#form_section"] {
-    display: block;
-    text-decoration: none;
+
+.icon.facebook {
+    background-image: url(src/images/Facebook_icon.svg);
+}
+
+.icon.telegram {
+    background-image: url(src/images/Telegram_icon.svg);
+}
+
+.icon.youtube {
+    background-image: url(src/images/Youtube_icon.svg);
+}
+
+/* Контейнер empty_line */
+.empty_line {
+    width: 100%; /* Контейнер занимает 100% ширины */
+    min-height: 100px; /* Минимальная высота в 100px */
+    background-color: #222222; /* Цвет совпадает с фоном body */
+    box-sizing: border-box; /* Учитываем padding при расчете размера */
+}
+
+/* Media Queries для адаптивности */
+@media (max-width: 1024px) {
+    .menu {
+        flex-wrap: wrap;
+    }
+
+    .menu_right {
+        max-width: 60%; /* Делаем ширину адаптивной для планшетов */
+    }
+
+    .main {
+        flex-wrap: wrap;
+    }
+
+    .secondary {
+        flex-wrap: wrap;
+    }
+
+    .empty_line {
+        min-height: 80px; /* Уменьшаем минимальную высоту на планшетах */
+    }
+}
+
+@media (max-width: 768px) {
+    .main_image {
+        flex: 0 1 100%;
+    }
+
+    .menu_right {
+        max-width: 100%; /* На мобильных устройствах используем всю ширину */
+    }
+
+    .secondary_left_image,
+    .secondary_right_image {
+        flex: 0 1 100%;
+        margin: 10px 0;
+    }
+
+    .form_section_center {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .empty_line {
+        min-height: 60px; /* Уменьшаем минимальную высоту на мобильных устройствах */
+    }
+
+    .center_icons {
+        justify-content: center;
+    }
 }
