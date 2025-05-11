@@ -61,7 +61,8 @@ section {
     align-items: center;
     flex-wrap: wrap;
     padding: 100px 5%; /* Учитываем фиксированное меню */
-    height: 100vh; /* Всегда 100% высоты области просмотра */
+    /* height: 100vh; Всегда 100% высоты области просмотра */
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -144,7 +145,8 @@ section {
     align-items: center;
     flex-wrap: nowrap; /* Гарантируем, что контейнеры не перенесутся */
     padding: 20px 5%;
-    height: 100vh; /* Всегда 100% высоты области просмотра */
+    /* height: 100vh; Всегда 100% высоты области просмотра */
+    height: 100%;
     box-sizing: border-box;
 }
 
@@ -228,7 +230,8 @@ section {
 /* Секция form_section */
 .form_section {
     padding: 20px 5%;
-    height: 100vh; /* Всегда 100% высоты области просмотра */
+    /* height: 100vh; Всегда 100% высоты области просмотра */
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
