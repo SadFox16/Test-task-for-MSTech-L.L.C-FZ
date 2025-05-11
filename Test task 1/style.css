@@ -16,7 +16,7 @@ section {
 /* Верхнее меню (header) */
 .menu {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
     position: fixed;
     top: 0;
@@ -29,8 +29,9 @@ section {
 .menu_left {
     font-family: 'Prata', serif;
     font-size: 36px;
-    flex: 0 1 40%;
+    flex: 0 1 20%;
     text-align: left;
+    margin-left: 5%;
 }
 
 .menu_right {
@@ -38,7 +39,8 @@ section {
     font-size: 16px;
     flex: 0 1 40%;
     text-align: left;
-    margin-left: auto; /* Отодвигаем от menu_left */
+    /* margin-left: auto; Отодвигаем от menu_left */
+    margin-left: 0;
 }
 
 .menu_list {
@@ -60,9 +62,10 @@ section {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 100px 5%; /* Учитываем фиксированное меню */
+    padding: 0px 5%; /* Учитываем фиксированное меню */
     /* height: 100vh; Всегда 100% высоты области просмотра */
-    height: 100%;
+    height: 1000px;
+    /* max-height: 100%; */
     box-sizing: border-box;
 }
 
@@ -115,10 +118,13 @@ section {
 }
 
 .main_button {
-    font-size: 20px;
+    font-size: 24px;
     padding: 10px 20px;
     cursor: pointer;
     background-color: #FFFFFF; /* Белый фон для кнопок */
+    width: 11rem;
+    height: 5.6rem;
+    font-weight: bold;
 }
 
 .main_image {
@@ -127,6 +133,8 @@ section {
     background-size: cover;
     background-position: center;
     height: 100%; /* Соответствует высоте секции main */
+    max-height: 100%;
+    /* position: relative; */
     margin-left: 5%; /* Адаптивный отступ слева от main_text */
 }
 
@@ -146,7 +154,7 @@ section {
     flex-wrap: nowrap; /* Гарантируем, что контейнеры не перенесутся */
     padding: 20px 5%;
     /* height: 100vh; Всегда 100% высоты области просмотра */
-    height: 100%;
+    height: 720px;
     box-sizing: border-box;
 }
 
@@ -288,10 +296,15 @@ section {
 
 .form_right_secondary {
     flex: 1 1 50%;
-    height: 400px;
+    /* width: 100%; */
+    /* height: 400px; */
+    width: 37rem;
+    height: 50rem;
     background-image: url(src/images/Form_human.png);
     background-size: cover;
     background-position: center;
+    /* height: 100%; */
+    z-index: 1000;
 }
 
 /* Footer */
@@ -310,7 +323,7 @@ section {
 .footer_menu {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 3.75rem;
     flex-wrap: wrap;
     list-style: none; /* Убираем маркеры списка */
     padding: 0;
@@ -320,7 +333,8 @@ section {
 .footer_menu ul{
     display: flex;
     justify-content: center;
-    gap: 20px;
+    /* gap: 20px; */
+    gap: 3.75rem;
     flex-wrap: wrap;
     list-style: none; /* Убираем маркеры списка */
     padding: 0;
@@ -334,17 +348,43 @@ section {
 .footer_bottom {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 10px 5%;
+    /* align-items: center; */
     flex-wrap: wrap;
     gap: 20px;
     margin-top: 3.75rem;
     margin-bottom: 3rem;
 }
 
+.footer_bottom_left{
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left_title{
+    font-family: Prata;
+    /* font-size: 36px; */
+    font-size: 2.25rem;
+}
+
+.left_text{
+    /* font-size: 20px; */
+    font-size: 1.25rem;
+}
+
+.footer_bottom_center{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .center_icons{
     display: flex;
     gap: 32px;
-    margin-bottom: 64px;
+    /* margin-bottom: 64px; */
+    margin-bottom: 3.75rem;
 }
 
 .icon{
@@ -386,7 +426,25 @@ section {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     text-align: center;
-    margin-top: 3.75rem;
+    /* margin-top: 3.75rem; */
+}
+
+.footer_bottom_right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bottom_button{
+    width: 11rem;
+    height: 4.8rem;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.right_text{
+    text-align: right;
+    font-size: 20px;
 }
 
 /* Стили кнопок */
