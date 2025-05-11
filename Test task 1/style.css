@@ -283,6 +283,8 @@ section {
 
 .acept_block{
     display: flex;
+    color: black;
+    font-size: 1rem;
 }
 
 .form_button{
