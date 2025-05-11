@@ -8,6 +8,10 @@ body {
     overflow-x: hidden; /* Убираем горизонтальный скролл */
 }
 
+.scrolled{
+    background-color: #222222;
+}
+
 section {
     width: 100%; /* Секции занимают 100% доступного пространства по ширине */
     height: auto; /* Высота секций адаптивная */
@@ -24,7 +28,6 @@ section {
     padding: 10px 5%;
     width: 100%; /* Header занимает 100% доступного пространства по ширине */
     z-index: 999;
-    background: transparent;
     box-sizing: border-box;
 }
 
@@ -138,6 +141,9 @@ section {
     color: #222222;
     font-weight: bold;
     transition: all 0.3s ease;
+    width: 30%;
+    height: 6rem;
+    /* height: 30%; */
 }
 
 .main_button:hover {
@@ -148,7 +154,7 @@ section {
     flex: 0 1 40%;
     background-image: url(src/images/main_image.png);
     background-size: cover; /* Картинка растягивается и заполняет весь контейнер */
-    background-position: center; /* Центрируем изображение */
+    background-position: center top; /* Центрируем изображение */
     background-repeat: no-repeat; /* Убираем повторение картинки */
     height: auto;
     aspect-ratio: 1/1; /* Гарантируем правильное соотношение сторон */
@@ -240,6 +246,7 @@ section {
 /* Секция form_section */
 .form_section {
     padding: 20px 5%;
+    padding-bottom: 0;
     display: flex;
     justify-content: center;
     /* align-items: center; */
@@ -253,9 +260,10 @@ section {
     background-color: #FFFFFF;
     display: flex;
     /* justify-content: space-between; */
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     border-radius: 20px;
     padding: 20px;
     width: 80%;
@@ -274,6 +282,7 @@ section {
     color: #38535D;
     font-family: Prata;
     font-size: 54px;
+    margin-bottom: 45px;
 }
 
 form{
@@ -316,36 +325,56 @@ input::placeholder{
     font-size: 24px;
 }
 
+.right_wrapper{
+    /* width: 100%; */
+    width: 50%;
+    height: 140%;
+    display: flex;
+}
+
 .form_right {
     flex: 1 1 50%;
     /* height: auto; */
     background-image: url(src/images/Form_human.png); /* Убедитесь, что путь к картинке правильный */
-    /* background-size: contain; Картинка пропорционально вписывается в контейнер */
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
-    height: 100%;
+    /* height: 100%; */
 }
 
-.form_right::before{
-
+.secondary_line{
+    /* display: flex; */
+    z-index: 99999;
+    /* flex-wrap: nowrap; */
+    position: relative;
 }
 
 /* Footer */
-.footer {
-    padding: 20px 5%;
-    background-color: #333333;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    box-sizing: border-box;
+footer {
+    /* padding: 20px 5%; */
+    /* background-color: #333333; */
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
+    /* box-sizing: border-box; */
     width: 100%; /* Footer занимает 100% доступного пространства по ширине */
+    z-index: 9999;
+    position: relative;
 }
 
 .footer_line {
     width: 100%;
     height: 2px;
     background-color: #D5C9BE;
-    margin: 10px 0;
+    margin: 0 0;
+    z-index: 9999;
+    position: relative;
+}
+
+.footer_menu{
+    margin: 40px 0;
+    z-index: 9999;
+    position: relative;
 }
 
 .footer_menu ul {
@@ -398,6 +427,10 @@ input::placeholder{
 
 .bottom_button{
     margin-bottom: 60px;
+    /* width: 30%; */
+    font-style: italic;
+    height: 6rem;
+    width: 100%;
 }
 
 .center_icons {
