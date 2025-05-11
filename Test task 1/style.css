@@ -161,6 +161,7 @@ section {
     flex: 0 1 36%; /* Занимает 36% доступной ширины */
     max-width: 600px;
     text-align: center;
+    text-align: left;
 }
 
 .secondary_text_line {
@@ -269,6 +270,19 @@ section {
     box-sizing: border-box;
 }
 
+.acept_block{
+    display: flex;
+}
+
+.form_button{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    width: 100%;
+    background-color: black;
+    color:#FFFFFF;
+    height: 100px;
+}
+
 .form_right_secondary {
     flex: 1 1 50%;
     height: 400px;
@@ -297,7 +311,21 @@ section {
     flex-wrap: wrap;
     list-style: none; /* Убираем маркеры списка */
     padding: 0;
+    margin: 2.5rem 0;
+}
+
+.footer_menu ul{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+    font-size: 20px;
+    text-transform: uppercase;
 }
 
 .footer_bottom {
@@ -306,6 +334,8 @@ section {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 3.75rem;
+    margin-bottom: 3rem;
 }
 
 .center_icons{
@@ -347,6 +377,13 @@ section {
 .youtube{
     background-image: url(src/images/Youtube_icon.svg);
     background-size: cover;
+}
+
+.center_text{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 3.75rem;
 }
 
 /* Стили кнопок */
