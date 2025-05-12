@@ -1,97 +1,93 @@
 /* Общие стили */
 body {
-  margin: 0 auto; /* Центрируем содержимое */
+  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: black; /* Чёрный фон */
-  color: white; /* Белый цвет текста */
-  width: 100%; /* Ширина тела страницы */
-  max-width: 1440px; /* Ограничиваем максимальную ширину */
-  height: 100%; /* Высота тела страницы */
+  background-color: black;
+  color: white;
+  width: 100%;
+  max-width: 1440px;
+  height: 100%;
   padding: 0;
   box-sizing: border-box;
-  overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+  overflow-x: hidden;
 }
 
 /* Контейнер для строк */
 .video_grid {
   display: flex;
   flex-direction: column;
-  gap: 100px; /* Отступ между строками */
-  margin-top: 40px; /* Отступ сверху */
-  width: 100%; /* Адаптивная ширина */
-  height: auto; /* Высота зависит от содержимого */
+  gap: 100px;
+  margin-top: 40px;
+  width: 100%;
+  height: auto;
   box-sizing: border-box;
-  padding: 0 10px; /* Отступы от краёв */
+  padding: 0 10px;
 }
 
 /* Строки */
 .row {
   display: flex;
-  align-items: center; /* Выравнивание элементов по вертикали */
-  gap: 5px; /* Отступы между текстом и видео */
-  width: 100%; /* Каждая строка занимает 100% ширины */
+  align-items: center;
+  gap: 5px;
+  width: 100%;
   box-sizing: border-box;
 }
 
 /* Видео кусочки */
 .video-piece {
-  height: 35px; /* Фиксированная высота */
-  object-fit: cover; /* Сохранение пропорций содержимого */
-  flex-grow: 1; /* Видео занимает оставшееся пространство между текстом */
-  flex-basis: 0; /* Базовая ширина равна 0 для полного растяжения */
-  max-width: none; /* Убираем ограничения по максимальной ширине */
-  background-color: grey; /* Фон для видео */
+  height: 35px;
+  object-fit: cover; /* Сохраняем пропорции */
+  flex-grow: 1;
+  flex-basis: 0;
+  max-width: none;
+  background-color: grey;
 }
 
-/* Текстовые элементы в первой и третьей строках */
-.row:nth-child(1) .text:last-child,
-.row:nth-child(3) .text:last-child {
-  flex-grow: 1; /* Текст растягивается, занимая всё оставшееся пространство */
-  text-align: right; /* Текст выравнивается по правому краю */
-  white-space: nowrap; /* Текст не переносится на новую строку */
+/* Уникальная позиция для каждого кусочка видео */
+.piece1 {
+  object-position: 0% 0%; /* Левый верхний угол */
 }
 
-/* Видео в конце четвёртой строки */
-.row:last-child .video-piece {
-  flex-grow: 1; /* Видео растягивается, занимая всё доступное пространство */
-  flex-basis: 0; /* Базовая ширина равна 0 */
-  max-width: none; /* Убираем ограничения на максимальную ширину */
-  align-self: stretch; /* Видео занимает всю доступную высоту строки */
+.piece2 {
+  object-position: 50% 0%; /* Центр сверху */
+}
+
+.piece3 {
+  object-position: 100% 0%; /* Правый верхний угол */
+}
+
+.piece4 {
+  object-position: 50% 50%; /* Центр видео */
 }
 
 /* Текстовые элементы */
 .text {
-  display: inline-block; /* Контейнер текста растягивается по ширине содержимого */
-  font-size: calc(100px + 0.5vw); /* Размер текста начинается с 100px и адаптивно увеличивается */
-  font-weight: bold; /* Делаем весь текст жирным */
-  line-height: 35px; /* Высота строки равна высоте текста и видео */
-  margin: 0; /* Убираем внешние отступы */
-  padding: 0; /* Убираем внутренние отступы */
+  display: inline-block;
+  font-size: calc(100px + 0.5vw);
+  font-weight: bold;
+  line-height: 35px;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
 }
 
 /* Адаптивные стили */
-@media (max-width: 1440px) {
-  .text {
-    font-size: calc(80px + 0.5vw); /* Уменьшаем размер текста для экранов шириной до 1440 пикселей */
-  }
-}
-
 @media (max-width: 768px) {
   .text {
-    font-size: calc(60px + 0.5vw); /* Уменьшаем размер текста для маленьких экранов */
+    font-size: calc(70px + 0.5vw);
   }
 
   .video-piece {
-    height: 30px; /* Уменьшаем фиксированную высоту видео для экранов шириной до 768 пикселей */
+    height: 30px;
   }
 }
 
 @media (max-width: 480px) {
   .text {
-    font-size: calc(40px + 0.5vw); /* Ещё меньше текст для очень маленьких экранов */
+    font-size: calc(50px + 0.5vw);
   }
 
   .video-piece {
-    height: 25px; /* Уменьшаем фиксированную высоту видео для экранов шириной до 480 пикселей */
+    height: 25px;
   }
 }
