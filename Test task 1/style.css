@@ -1,3 +1,4 @@
+
 /* Основные стили */
 body {
     background-color: #222222;
@@ -158,6 +159,7 @@ section {
     background-repeat: no-repeat; /* Убираем повторение картинки */
     height: auto;
     aspect-ratio: 1/1; /* Гарантируем правильное соотношение сторон */
+    min-height: 100%;
 }
 
 /* Секция secondary */
@@ -482,6 +484,17 @@ footer {
 }
 
 /* Media Queries для адаптивности */
+@media (max-width: 1500px) {
+    .form_section_center {
+        background-size: cover; /* Фоновая картинка занимает всю высоту блока */
+    }
+
+    .form_right{
+        background-size: cover; /* Фоновая картинка занимает всю высоту блока */
+        /* width: 100%; */
+    }
+}
+
 @media (max-width: 1024px) {
     .menu {
         flex-wrap: wrap;
@@ -489,6 +502,7 @@ footer {
 
     .menu_right {
         max-width: 60%; /* Делаем ширину адаптивной для планшетов */
+        flex-wrap: nowrap;
     }
 
     .main {
@@ -502,9 +516,26 @@ footer {
     .empty_line {
         min-height: 80px; /* Уменьшаем минимальную высоту на планшетах */
     }
+
+    .main_image {
+        background-position: top; /* Совмещаем верх изображения с верхом блока */
+        min-height: 100%; /* Изображение занимает всю высоту секции */
+    }
+
+    .form_section_center {
+        background-size: cover; /* Фоновая картинка занимает всю высоту блока */
+    }
+
+    .form_right {
+        background-size: cover; /* Фоновая картинка занимает всю высоту блока */
+    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 770px) {
     .main_image {
         flex: 0 1 100%;
     }
@@ -530,5 +561,17 @@ footer {
 
     .center_icons {
         justify-content: center;
+    }
+
+    .secondary{
+        flex-direction: column;
+    }
+
+    .form_right{
+        display: none;
+    }
+
+    .main_text{
+        margin-bottom: 5rem;
     }
 }
