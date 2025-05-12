@@ -1,4 +1,7 @@
-# Test-task-for-MSTech-L.L.C-FZ - https://hh.ru/vacancy/119334242?hhtmFrom=chat
+# Test-task-for-MSTech-L.L.C-FZ
+
+Для вакансии - https://hh.ru/vacancy/119334242?hhtmFrom=chat
+
 Задание 1:
 
 Макет Figma - https://www.figma.com/design/05OXaYEMoFjNK9yV02lag2/%D0%BC%D0%B0%D0%BA%D0%B5%D1%82?node-id=0-1&t=msy7z9DG9Q7kxTRm-0
